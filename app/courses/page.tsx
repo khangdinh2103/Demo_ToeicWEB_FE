@@ -225,10 +225,18 @@ export default function CoursesPage() {
                           </span>
                         </div>
                       </div>
-                      <Button className="w-full">
-                        <Play className="mr-2 h-4 w-4" />
-                        Đăng ký ngay
-                      </Button>
+                      <div className="space-y-2">
+                        <Link href={`/courses/${course.id}`}>
+                          <Button variant="outline" className="w-full">
+                            <BookOpen className="mr-2 h-4 w-4" />
+                            Xem chi tiết
+                          </Button>
+                        </Link>
+                        <Button className="w-full">
+                          <Play className="mr-2 h-4 w-4" />
+                          Đăng ký ngay
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
