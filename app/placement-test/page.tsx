@@ -89,7 +89,7 @@ export default function PlacementTestPage() {
           <div className="text-center mb-8">
             <Link href="/" className="inline-flex items-center space-x-2 mb-6">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              <span className="text-2xl font-bold text-gray-900">TOEIC Master</span>
+              <span className="text-2xl font-bold text-gray-900">STAREDU</span>
             </Link>
             <h1 className="text-4xl font-bold text-gray-900 mb-4">Test Đầu Vào TOEIC</h1>
             <p className="text-xl text-gray-600">Đánh giá trình độ hiện tại và nhận đề xuất khóa học phù hợp</p>

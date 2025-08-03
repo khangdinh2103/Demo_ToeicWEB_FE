@@ -257,7 +257,7 @@ export default function CourseDetailPage() {
               </Link>
               <div className="flex items-center space-x-2">
                 <BookOpen className="h-8 w-8 text-blue-600" />
-                <span className="text-2xl font-bold text-gray-900">TOEIC Master</span>
+                <span className="text-2xl font-bold text-gray-900">STAREDU</span>
               </div>
             </div>
             <nav className="hidden md:flex space-x-8">

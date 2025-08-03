@@ -15,7 +15,7 @@ export default function AIToolsPage() {
     {
       role: "assistant",
       content:
-        "Xin chào! Tôi là AI Assistant của TOEIC Master. Tôi có thể giúp bạn về từ vựng, ngữ pháp, và các mẹo làm bài TOEIC. Bạn cần hỗ trợ gì?",
+        "Xin chào! Tôi là AI Assistant của STAREDU. Tôi có thể giúp bạn về từ vựng, ngữ pháp, và các mẹo làm bài TOEIC. Bạn cần hỗ trợ gì?",
     },
   ])
   const [chatInput, setChatInput] = useState("")
@@ -98,7 +98,7 @@ export default function AIToolsPage() {
             <div className="flex items-center space-x-2">
               <Link href="/" className="flex items-center space-x-2">
                 <BookOpen className="h-8 w-8 text-blue-600" />
-                <span className="text-2xl font-bold text-gray-900">TOEIC Master</span>
+                <span className="text-2xl font-bold text-gray-900">STAREDU</span>
               </Link>
             </div>
             <nav className="hidden md:flex space-x-8">

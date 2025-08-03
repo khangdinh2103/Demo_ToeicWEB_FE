@@ -31,7 +31,7 @@ export default function LoginPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center space-x-2">
             <BookOpen className="h-10 w-10 text-blue-600" />
-            <span className="text-3xl font-bold text-gray-900">TOEIC Master</span>
+            <span className="text-3xl font-bold text-gray-900">STAREDU</span>
           </Link>
         </div>
 

@@ -78,7 +78,7 @@ export default function HomePage() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              <span className="text-2xl font-bold text-gray-900">TOEIC Master</span>
+              <span className="text-2xl font-bold text-gray-900">STAREDU</span>
             </div>
             <nav className="hidden md:flex space-x-8">
               <Link href="#" className="text-gray-700 hover:text-blue-600">
@@ -231,7 +231,7 @@ export default function HomePage() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <BookOpen className="h-8 w-8 text-blue-400" />
-                <span className="text-2xl font-bold">TOEIC Master</span>
+                <span className="text-2xl font-bold">STAREDU</span>
               </div>
               <p className="text-gray-400">Nền tảng học TOEIC thông minh với công nghệ AI tiên tiến</p>
             </div>
@@ -263,7 +263,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 TOEIC Master. All rights reserved.</p>
+            <p>&copy; 2024 STAREDU. All rights reserved.</p>
           </div>
         </div>
       </footer>

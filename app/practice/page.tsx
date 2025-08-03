@@ -117,7 +117,7 @@ export default function PracticePage() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              <span className="text-2xl font-bold text-gray-900">TOEIC Master</span>
+              <span className="text-2xl font-bold text-gray-900">STAREDU</span>
             </div>
             <nav className="hidden md:flex space-x-8">
               <Link href="/" className="text-gray-700 hover:text-blue-600">
