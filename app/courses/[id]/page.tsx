@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -207,6 +207,15 @@ export default function CourseDetailPage() {
   const [selectedLesson, setSelectedLesson] = useState<any>(null)
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
   const [currentWeek, setCurrentWeek] = useState(0)
+  const [studyDays, setStudyDays] = useState(0)
+
+  useEffect(() => {
+    // Calculate study days only on client side to avoid hydration mismatch
+    const startDate = new Date('2024-01-01')
+    const currentDate = new Date()
+    const days = Math.ceil((currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))
+    setStudyDays(days)
+  }, [])
 
   if (!course) {
     return (
@@ -549,7 +558,7 @@ export default function CourseDetailPage() {
                     </div>
                     <div className="p-4 bg-purple-50 rounded-lg">
                       <div className="text-2xl font-bold text-purple-600">
-                        {Math.ceil((Date.now() - new Date('2024-01-01').getTime()) / (1000 * 60 * 60 * 24))}
+                        {studyDays}
                       </div>
                       <p className="text-sm text-gray-600">Ngày học</p>
                     </div>

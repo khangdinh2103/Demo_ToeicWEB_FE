@@ -4,11 +4,15 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BookOpen, Brain, Mic, PenTool, Target, Award, Play } from "lucide-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { BookOpen, Brain, Mic, PenTool, Target, Award, Play, CheckCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 export default function HomePage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [selectedSkills, setSelectedSkills] = useState("toeic-4-skills")
+  const [currentLevel, setCurrentLevel] = useState("lr-1-295-sw-1-99")
+  const [targetLevel, setTargetLevel] = useState("lr-600-sw-200")
 
   const features = [
     {
@@ -138,6 +142,277 @@ export default function HomePage() {
               </Button>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Course Recommendation Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Tìm Khóa Học Phù Hợp</h2>
+            <p className="text-blue-100 text-lg">Chọn kỹ năng, trình độ hiện tại và mục tiêu để nhận đề xuất khóa học tốt nhất</p>
+          </div>
+
+          {/* Skills Tabs */}
+          <Tabs value={selectedSkills} onValueChange={setSelectedSkills} className="w-full">
+            <div className="flex justify-center mb-8">
+              <TabsList className="bg-white/10 backdrop-blur-sm border border-white/20 p-1">
+                <TabsTrigger 
+                  value="toeic-listening-reading" 
+                  className="data-[state=active]:bg-white data-[state=active]:text-blue-600 text-white"
+                >
+                  TOEIC Listening & Reading
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="toeic-speaking-writing" 
+                  className="data-[state=active]:bg-white data-[state=active]:text-blue-600 text-white"
+                >
+                  TOEIC Speaking & Writing
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="toeic-4-skills" 
+                  className="data-[state=active]:bg-white data-[state=active]:text-blue-600 text-white"
+                >
+                  TOEIC 4 kỹ năng
+                </TabsTrigger>
+              </TabsList>
+            </div>
+
+            <TabsContent value="toeic-listening-reading" className="mt-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Current Level Section */}
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-bold text-center">Trình độ của tôi</h3>
+                  <div className="space-y-3">
+                    {[
+                      { id: "lr-1-295", label: "TOEIC LR 1–295", isSelected: true },
+                      { id: "lr-300-595", label: "TOEIC LR 300–595", isSelected: false },
+                      { id: "lr-600-650", label: "TOEIC LR 600–650", isSelected: false }
+                    ].map((level) => (
+                      <button
+                        key={level.id}
+                        onClick={() => setCurrentLevel(level.id)}
+                        className={`w-full p-4 rounded-lg text-center font-medium transition-all ${
+                          currentLevel === level.id
+                            ? 'bg-white text-blue-600 shadow-lg transform scale-105'
+                            : 'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20'
+                        }`}
+                      >
+                        {level.label}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="text-center">
+                    <Link href="/placement-test" className="text-blue-200 hover:text-white underline text-sm">
+                      Bạn chưa rõ trình độ bản thân? Kiểm tra đầu vào
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Target Level Section */}
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-bold text-center">Mục tiêu của tôi</h3>
+                  <div className="space-y-3">
+                    {[
+                      { id: "lr-300", label: "TOEIC LR 300", isSelected: false },
+                      { id: "lr-600", label: "TOEIC LR 600", isSelected: true },
+                      { id: "lr-800", label: "TOEIC LR 800+", isSelected: false }
+                    ].map((target) => (
+                      <button
+                        key={target.id}
+                        onClick={() => setTargetLevel(target.id)}
+                        className={`w-full p-4 rounded-lg text-center font-medium transition-all ${
+                          targetLevel === target.id
+                            ? 'bg-white text-blue-600 shadow-lg transform scale-105'
+                            : 'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20'
+                        }`}
+                      >
+                        {target.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="toeic-speaking-writing" className="mt-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Current Level Section */}
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-bold text-center">Trình độ của tôi</h3>
+                  <div className="space-y-3">
+                    {[
+                      { id: "sw-1-99", label: "TOEIC SW 1–99", isSelected: true },
+                      { id: "sw-100-199", label: "TOEIC SW 100–199", isSelected: false },
+                      { id: "sw-200-250", label: "TOEIC SW 200–250", isSelected: false }
+                    ].map((level) => (
+                      <button
+                        key={level.id}
+                        onClick={() => setCurrentLevel(level.id)}
+                        className={`w-full p-4 rounded-lg text-center font-medium transition-all ${
+                          currentLevel === level.id
+                            ? 'bg-white text-blue-600 shadow-lg transform scale-105'
+                            : 'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20'
+                        }`}
+                      >
+                        {level.label}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="text-center">
+                    <Link href="/placement-test" className="text-blue-200 hover:text-white underline text-sm">
+                      Bạn chưa rõ trình độ bản thân? Kiểm tra đầu vào
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Target Level Section */}
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-bold text-center">Mục tiêu của tôi</h3>
+                  <div className="space-y-3">
+                    {[
+                      { id: "sw-100", label: "TOEIC SW 100", isSelected: false },
+                      { id: "sw-200", label: "TOEIC SW 200", isSelected: true },
+                      { id: "sw-300", label: "TOEIC SW 300+", isSelected: false }
+                    ].map((target) => (
+                      <button
+                        key={target.id}
+                        onClick={() => setTargetLevel(target.id)}
+                        className={`w-full p-4 rounded-lg text-center font-medium transition-all ${
+                          targetLevel === target.id
+                            ? 'bg-white text-blue-600 shadow-lg transform scale-105'
+                            : 'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20'
+                        }`}
+                      >
+                        {target.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="toeic-4-skills" className="mt-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Current Level Section */}
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-bold text-center">Trình độ của tôi</h3>
+                  <div className="space-y-3">
+                    {[
+                      { id: "lr-1-295-sw-1-99", label: "TOEIC LR 1–295 & SW 1–99", isSelected: true },
+                      { id: "lr-300-595-sw-100-199", label: "TOEIC LR 300–595 & SW 100–199", isSelected: false },
+                      { id: "lr-600-650-sw-200-250", label: "TOEIC LR 600–650 & SW 200–250", isSelected: false }
+                    ].map((level) => (
+                      <button
+                        key={level.id}
+                        onClick={() => setCurrentLevel(level.id)}
+                        className={`w-full p-4 rounded-lg text-center font-medium transition-all ${
+                          currentLevel === level.id
+                            ? 'bg-white text-blue-600 shadow-lg transform scale-105'
+                            : 'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20'
+                        }`}
+                      >
+                        {level.label}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="text-center">
+                    <Link href="/placement-test" className="text-blue-200 hover:text-white underline text-sm">
+                      Bạn chưa rõ trình độ bản thân? Kiểm tra đầu vào
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Target Level Section */}
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-bold text-center">Mục tiêu của tôi</h3>
+                  <div className="space-y-3">
+                    {[
+                      { id: "lr-300-sw-100", label: "TOEIC LR 300 & SW 100", isSelected: false },
+                      { id: "lr-600-sw-200", label: "TOEIC LR 600 & SW 200", isSelected: true },
+                      { id: "lr-800-sw-300", label: "TOEIC LR 800+ & SW 300+", isSelected: false }
+                    ].map((target) => (
+                      <button
+                        key={target.id}
+                        onClick={() => setTargetLevel(target.id)}
+                        className={`w-full p-4 rounded-lg text-center font-medium transition-all ${
+                          targetLevel === target.id
+                            ? 'bg-white text-blue-600 shadow-lg transform scale-105'
+                            : 'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20'
+                        }`}
+                      >
+                        {target.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Learning Path */}
+              <div className="mt-12 text-center">
+                <h3 className="text-2xl font-bold mb-8">Lộ trình học đề xuất</h3>
+                <div className="flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-6">
+                  {/* Chapter 1 */}
+                  <div className="relative">
+                    <div className="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mb-4 mx-auto">
+                      <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                        <span className="text-blue-600 font-bold text-sm">★</span>
+                      </div>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 max-w-xs">
+                      <h4 className="font-bold mb-2">Chặng 1</h4>
+                      <p className="text-sm mb-2">TOEIC 4 kỹ năng Nền tảng</p>
+                    </div>
+                  </div>
+
+                  {/* Arrow */}
+                  <ArrowRight className="hidden lg:block h-6 w-6 text-white/60" />
+
+                  {/* Chapter 2 */}
+                  <div className="relative">
+                    <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                      <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                        <span className="text-yellow-600 font-bold text-sm">★</span>
+                      </div>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 max-w-xs">
+                      <h4 className="font-bold mb-2">Chặng 2</h4>
+                      <p className="text-sm mb-2">TOEIC 4 kỹ năng Trung cấp</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Course Summary */}
+                <div className="mt-8 flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-8">
+                  <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+                    <BookOpen className="h-5 w-5" />
+                    <span className="text-sm">2 chặng</span>
+                  </div>
+                  <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+                    <Play className="h-5 w-5" />
+                    <span className="text-sm">Gồm 9 khóa học nhỏ</span>
+                  </div>
+                  <div className="bg-yellow-500 text-yellow-900 rounded-lg p-4 font-bold">
+                    <div className="flex items-center space-x-2">
+                      <Award className="h-5 w-5" />
+                      <span className="text-sm">Cam kết mục tiêu đầu ra</span>
+                    </div>
+                    <div className="text-xs mt-1">TOEIC LR 600 & SW 200</div>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <div className="mt-8">
+                  <Link href="/courses">
+                    <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3">
+                      Bắt đầu học ngay
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
